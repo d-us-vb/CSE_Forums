@@ -1,0 +1,131 @@
+/* basic.css
+ * 
+ * contains look-and-feel, as well as universal elements:
+ * - header
+ * - dropdown menu
+ * - main container
+ * - footer
+ * and related effects.
+ */
+ 
+ * {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	height: 100%;
+	font-family: sans-serif;
+}
+
+/* Header styles and animations */
+
+#header {
+	position: fixed;
+	margin-bottom: -75px;
+	background-color: #000;
+	animation-duration: 0.5s;
+}
+
+@keyframes header-collapse {
+    from {width: 100%;
+          top: 0;
+          right: 0;
+          height: 75px;
+          border-radius: 0;
+    }
+    to {
+        width: 40px;
+        top: 15px;
+        right: 15px;
+        height: 40px;
+        border-radius: 20px;
+    }
+}
+
+@keyframes header-expand {
+    from {
+        width: 40px;
+        top: 15px;
+        right: 15px;
+        height: 40px;
+        border-radius: 20px;
+    }
+    to {
+        width: 100%;
+        top: 0;
+        right: 0;
+        height: 75px;
+        border-radius: 0;
+    }
+}
+
+#menu-icon {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+}
+
+.full-header {
+    width: 100%;
+    top: 0;
+    right: 0;
+    height: 75px;
+    border-radius: 0;
+}
+
+.bubble-header {
+    width: 40px;
+    top: 15px;
+    right: 15px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+/* Dropdown Menu and animations*/
+
+/* Important: the dropdown menu expands from the bubble header. */
+
+/* default dropdown style */
+#dropdown {
+    width: 250px;
+    top: 15px;
+    right: 15px;
+    border-radius: 20px;
+}
+
+@keyframes dropdown-expand {
+    from {
+        width: 40px;
+        top: 15px;
+        right: 15px;
+        height: 40px;
+        border-radius: 20px;
+    }
+    to {
+        width: 250px;
+        top: 15px;
+        right: 15px;
+        border-radius: 20px;        
+    }
+}
+
+@keyframes dropdown-collapse {
+    
+}
+
+
+#content {
+	min-height: 100%;
+}
+#main {
+    margin-top: 75px;
+	padding: 75px 50px;
+}
+footer {
+	position: relative;
+	bottom: 0;
+	left: 0;
+	height: 75px;
+	margin-top: -75px;
+	background-color: #ddd;
+}
