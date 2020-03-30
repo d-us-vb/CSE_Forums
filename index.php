@@ -8,8 +8,21 @@
 </head>
 <body>
 <header class="full-header" id="header">
-    
+    <a href="./index.php"><span id="title-heading">CSE Forums</span></a>
+    <a href="###">Tutorials</a>
+    <a href="###">Study Aids</a>
+    <a href="###">Wikis</a>
 </header>
+
+<div id="dropdown" class="bubble-dropdown">
+    <a href="###" id="dropdown-first-element">CSE Forums</a>
+    <a href="###">Write</a>
+    <a href="###">Tutorials</a>
+    <a href="###">Study Aids</a>
+    <a href="###">Wikis</a>
+    <a href="###">My Profile</a>
+    <a href="###" class="dropdown-last-element ">Log in</a>
+</div>
 <img id="menu-icon" src="./menu.ico" height="20px" width="20px">
 <div id="content">
 <section id="main">
@@ -40,7 +53,91 @@ Sed sollicitudin placerat purus ut ullamcorper. Sed sit amet quam nulla. Ut tinc
 </div>
 <footer>
 </footer>
-<script src="./js/basic.js"></script>
+<script>
+
+    // At some point I should probably move this all to a separate js file.
+
+    // heaer collapse animation script
+    // TODO: disable this on mobile
+    // TODO: mobile users it appears as a simple button in the lower right.
+    var header = document.getElementById("header");
+    var headerCollapsed = false;
+    var scrollFunc = function() {
+        if(window.scrollY > 50 && !header.classList.contains("bubble-header")) {
+            header.style.animationName = "header-collapse";
+            setTimeout(function() {
+                header.classList.add("bubble-header");
+                header.classList.remove("full-header");
+            }, 495);
+            headerCollapsed = true;
+        } else if(dropdownCollapsed && window.scrollY <= 50 && !header.classList.contains("full-header")) {
+            header.style.animationName = "header-expand";
+            setTimeout(function() {
+                header.classList.add("full-header");
+                header.classList.remove("bubble-header");
+            }, 495);
+            headerCollapsed = false;
+        }
+    }
+    window.onscroll = scrollFunc;
+    
+    // dropdown menu
+    var dropdown = document.getElementById("dropdown");
+    var linkGroup = document.getElementById("link-group");
+    var dropdownCollapsed = true;
+    var toggleDropdownFunc = function() {
+        console.log("You clicked the dropdown!");
+        
+        if(dropdownCollapsed && window.scrollY > 50 && header.classList.contains("bubble-header")) {
+            dropdown.style.animationName = "dropdown-expand";
+            setTimeout(function() {
+                dropdown.classList.add("full-dropdown");
+                dropdown.classList.remove("bubble-dropdown");
+            }, 485);
+            dropdownCollapsed = false;
+        } else if(!dropdownCollapsed && window.scrollY > 50 && header.classList.contains("bubble-header")) {
+            dropdown.style.animationName = "dropdown-collapse";
+            setTimeout(function() {
+                dropdown.classList.add("bubble-dropdown")
+                dropdown.classList.remove("full-dropdown");
+            }, 485);
+            dropdownCollapsed = true;
+        } else if(dropdownCollapsed && window.scrollY < 50 && header.classList.contains("full-header")) {
+            dropdown.style.animationName = "dropdown-expand";
+            header.style.animationName = "header-collapse";
+            setTimeout(function() {
+                dropdown.classList.add("full-dropdown");
+                header.classList.add("bubble-header");
+                dropdown.classList.remove("bubble-dropdown");
+                header.classList.remove("full-header");
+            }, 485);
+            dropdownCollapsed = false;
+        } else {
+            dropdown.style.animationName = "dropdown-collapse";
+            header.style.animationName = "header-expand";
+            setTimeout(function() {
+                dropdown.classList.add("bubble-dropdown");
+                header.classList.add("full-header");
+                dropdown.classList.remove("full-dropdown");
+                header.classList.remove("bubble-header");
+            }, 485);
+            dropdownCollapsed = true;
+        }
+    }
+    
+    var closeMenu = function() {
+        console.log("did you click the window?")
+        if(!dropdownCollapsed) {
+            toggleDropdownFunc();
+        }
+    }
+    
+    dropdown.onclick = toggleDropdownFunc;
+    document.getElementById("menu-icon").onclick = toggleDropdownFunc;
+    document.getElementById("content").onclick = closeMenu;
+    // I guess it needs to be implicitly present at all times.
+    
+</script>
 </body>
 </html>
 

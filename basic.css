@@ -6,6 +6,8 @@
  * - main container
  * - footer
  * and related effects.
+ *
+ * By Jeremiah Glover, 2019-2020
  */
  
  * {
@@ -18,68 +20,86 @@ html, body {
 }
 
 /* Header styles and animations */
-
 #header {
 	position: fixed;
-	margin-bottom: -75px;
+	margin-bottom: -50px;
 	background-color: #000;
 	animation-duration: 0.5s;
 }
 
 @keyframes header-collapse {
-    from {width: 100%;
-          top: 0;
-          right: 0;
-          height: 75px;
-          border-radius: 0;
+    from {
+        font-size: 1em;
+        width: 100%;
+        top: 0;
+        right: 0;
+        height: 50px;
+        border-radius: 0;
     }
     to {
-        width: 40px;
-        top: 15px;
-        right: 15px;
-        height: 40px;
+        font-size: 0;
+        width: 30px;
+        top: 10px;
+        right: 10px;
+        height: 30px;
         border-radius: 20px;
     }
 }
 
 @keyframes header-expand {
     from {
-        width: 40px;
-        top: 15px;
-        right: 15px;
-        height: 40px;
+        font-size: 0;
+        width: 30px;
+        top: 10px;
+        right: 10px;
+        height: 30px;
         border-radius: 20px;
     }
     to {
+        font-size: 1em;
         width: 100%;
         top: 0;
         right: 0;
-        height: 75px;
+        height: 50px;
         border-radius: 0;
     }
 }
 
+#title-heading {
+    display: inline-block;
+    font-size: 2em;
+}
+
 #menu-icon {
     position: fixed;
-    top: 25px;
-    right: 25px;
+    top: 15px;
+    right: 15px;
 }
 
 .full-header {
+    display: inline-block;
+    color: white;
     width: 100%;
     top: 0;
     right: 0;
-    height: 75px;
+    height: 50px;
     border-radius: 0;
 }
 
-.bubble-header {
-    width: 40px;
-    top: 15px;
-    right: 15px;
-    height: 40px;
-    border-radius: 20px;
+.full-header a:hover {
+    text-decoration: underline;
 }
+
+.bubble-header {
+    color: transparent;
+    width: 30px;
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 0;
+}
+
 
 /* Dropdown Menu and animations*/
 
@@ -87,32 +107,106 @@ html, body {
 
 /* default dropdown style */
 #dropdown {
-    width: 250px;
-    top: 15px;
-    right: 15px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #000;
+    color: white;
+    animation-duration: 0.5s;
+    border-radius: 15px;
+}
+
+.full-dropdown {
+    width: 230px;
     border-radius: 20px;
+    font-size: 100%;
+}
+
+.bubble-dropdown {
+    width: 30px;
+    height: 30px;
+    font-size: 0px;
+}
+
+div.full-dropdown a {
+    display: block;
+    width: 210px;
+}
+
+div.full-dropdown a:hover {
+    background-color: gray;
+}
+
+.dropdown-last-element {
+    border-radius: 0 0 15px 15px;
+}
+
+div.bubble-dropdown a {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    margin: 0;
+    padding: 10px;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: white;
 }
 
 @keyframes dropdown-expand {
     from {
-        width: 40px;
-        top: 15px;
-        right: 15px;
-        height: 40px;
-        border-radius: 20px;
+        font-size: 0;
+        width: 30px;
+        top: 10px;
+        right: 10px;
+        height: 30px;
+        border-radius: 15px;
     }
     to {
-        width: 250px;
-        top: 15px;
-        right: 15px;
-        border-radius: 20px;        
+        font-size: 100%;
+        width: 230px;
+        height: 325px;
+        top: 10px;
+        right: 10px;
+        border-radius: 15px;        
     }
 }
 
 @keyframes dropdown-collapse {
-    
+    from {
+        font-size: 1em;
+        width: 230px;
+        height: 325px;
+        top: 10px;
+        right: 10px;
+        border-radius: 15px; 
+    }
+    to {
+        font-size: 0;
+        width: 30px;
+        top: 10px;
+        right: 10px;
+        height: 30px;
+        border-radius: 15px;
+    }
 }
 
+#dropdown-first-element {
+    border-radius: 15px 0 0 0;
+    font-size: 1.5em;
+    width: 180px;
+}
+
+
+
+
+/* Main content styles */
 
 #content {
 	min-height: 100%;
@@ -121,6 +215,11 @@ html, body {
     margin-top: 75px;
 	padding: 75px 50px;
 }
+
+article {
+    
+}
+
 footer {
 	position: relative;
 	bottom: 0;
