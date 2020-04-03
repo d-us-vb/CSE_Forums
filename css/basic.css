@@ -171,7 +171,7 @@ a:visited {
     to {
         font-size: 100%;
         width: 230px;
-        height: 325px;
+        height: 17em;
         top: 10px;
         right: 10px;
         border-radius: 15px;        
@@ -182,7 +182,7 @@ a:visited {
     from {
         font-size: 1em;
         width: 230px;
-        height: 325px;
+        height: 17em;
         top: 10px;
         right: 10px;
         border-radius: 15px; 
